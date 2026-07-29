@@ -1,0 +1,13 @@
+import canonicalLaneMathlib.AdmissibleClass
+
+namespace HautevilleHouse
+namespace GraphRepresentationsGeometricIntersectionRepresentationsCanonicalLaneLean
+
+structure AdmissibleClass where
+  object : IntersectionGraphFamily
+  endpointSatisfied : Prop
+  remainderRecorded : Prop
+  gateWitness : endpointSatisfied ∨ remainderRecorded
+
+end GraphRepresentationsGeometricIntersectionRepresentationsCanonicalLaneLean
+end HautevilleHouse

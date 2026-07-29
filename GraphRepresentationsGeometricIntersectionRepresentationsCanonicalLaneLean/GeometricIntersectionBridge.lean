@@ -1,0 +1,28 @@
+import canonicalLaneMathlib.AdmissibleClass
+import HautevilleHouse.GraphRepresentationsGeometricIntersectionRepresentationsCanonicalLaneLean.IntersectionGraphPackage
+import HautevilleHouse.GraphRepresentationsGeometricIntersectionRepresentationsCanonicalLaneLean.IntervalRepresentationPackage
+import HautevilleHouse.GraphRepresentationsGeometricIntersectionRepresentationsCanonicalLaneLean.PermutationGraphPackage
+
+/-!
+# GeometricIntersectionBridge unifies the packages into admissible-class closure
+-/
+
+namespace HautevilleHouse
+namespace GraphRepresentationsGeometricIntersectionRepresentationsCanonicalLaneLean
+
+structure GeometricIntersectionFoundation where
+  interval : IntervalGraphPackage
+  permutation : PermutationGraphPackage
+  intersectionGraph : IntersectionGraphPackage
+  intervalEvidence : IntervalRepEvidence interval
+  permutationEvidence : PermutationGraphEvidence permutation
+  intersectionGraphEvidence : IntersectionGraphClosed intersectionGraph
+
+def GeometricIntersectionFoundationClosed (F : GeometricIntersectionFoundation) : Prop :=
+  IntersectionGraphClosed F.intersectionGraph ∧ PermutationGraphClosed F.permutation
+
+theorem geometric_intersection_foundation_closed (F : GeometricIntersectionFoundation) : GeometricIntersectionFoundationClosed F := by
+  exact And.intro F.intersectionGraphEvidence F.permutationEvidence
+
+end GraphRepresentationsGeometricIntersectionRepresentationsCanonicalLaneLean
+end HautevilleHouse
